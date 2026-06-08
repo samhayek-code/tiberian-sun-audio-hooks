@@ -8,8 +8,9 @@ Sibling to [`claude-audio-hooks`](https://github.com/samhayek-code/claude-audio-
 shares the same scripts and the live install at `~/.claude/sounds/`. Install the base, drop
 these packs in alongside, switch freely.
 
-Two voices: **GDI EVA**, the calm battlefield announcer, and **CABAL**, Nod's menacing AI —
-played pure, every event a threat.
+Each pack blends its faction's announcer with its unit voices, the way the game layers them:
+**GDI** runs EVA and her infantry; **NOD** runs CABAL and his cyborgs. 40 lines per pack, fired
+at random.
 
 ## Install
 
@@ -29,19 +30,20 @@ others and the shared hooks intact.
 
 ## Packs
 
-| Pack | Voice | Sample |
-|------|-------|--------|
-| `gdi` | GDI EVA (battlefield announcer) | *"Construction complete." · "Ion cannon ready." · "Insufficient funds."* |
-| `nod` | CABAL (Nod AI) | *"Your probability of success is insignificant and dropping." · "Prepare for sterilization."* |
+| Pack | Voices | Sample |
+|------|--------|--------|
+| `gdi` | EVA announcer + GDI units (infantry, engineer) | *"Construction complete." · "Ion cannon ready." · "Awaiting orders." · "Medic!"* |
+| `nod` | CABAL + Nod units (cyborg, commando) | *"Your probability of success is insignificant and dropping." · "By your command." · "I can smell their fear."* |
 
 Each pack is a folder of four event buckets: `session-start`, `task-complete`,
 `needs-permission`, `error`. `play-random.sh` picks a random clip from the active pack's
 bucket on each event.
 
-GDI EVA maps the game's notifications to events one-to-one — superweapon-ready lines land on
-`needs-permission` (a powerful action armed, awaiting your target). CABAL has no congratulatory
-line in him, so `task-complete` gets dark-ironic gloats (*"Defeat of enemy predicted in
-T-minus 3, 2, 1."*) — every event stays in his voice.
+The mapping leans into each voice. `needs-permission` gets the units literally awaiting your
+command — GDI's *"Awaiting orders" / "Sir?"*, Nod's cyborg *"By your command."* `error` gets
+panic and menace — *"Medic!"*, *"I'm taking heavy fire!"*, CABAL's *"Prepare for sterilization."*
+CABAL has no congratulatory line, so on `task-complete` he turns dark-ironic (*"Defeat of enemy
+predicted in T-minus 3, 2, 1."*) while his cyborgs report *"Executing."*
 
 ## Use
 
