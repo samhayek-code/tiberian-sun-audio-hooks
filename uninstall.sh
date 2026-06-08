@@ -11,7 +11,7 @@ print_step()    { echo -e "  ${CYAN}▶${NC} $1"; }
 print_success() { echo -e "  ${GREEN}✓${NC} $1"; }
 print_warning() { echo -e "  ${YELLOW}⚠${NC} $1"; }
 
-PACKS=(tiberian-sun-gdi tiberian-sun-cabal)
+PACKS=(gdi nod)
 SOUNDS_DIR="$HOME/.claude/sounds"
 SETTINGS_FILE="$HOME/.claude/settings.json"
 CACHE_FILE="$HOME/.cache/sc2-claude-last-error"

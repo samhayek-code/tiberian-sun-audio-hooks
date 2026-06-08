@@ -1,8 +1,8 @@
 #!/bin/bash
 # Build a sound pack from a manifest of extracted TibSun EVA/CABAL clips.
 # Usage: TIBSUN_SRC=/path/to/named build_pack.sh <manifest> <pack-name> [dest-dir]
-#   <manifest>   lines of  canon|event|output-name  (see gdi.manifest / cabal.manifest)
-#   <pack-name>  e.g. tiberian-sun-gdi
+#   <manifest>   lines of  canon|event|output-name  (see gdi.manifest / nod.manifest)
+#   <pack-name>  e.g. gdi
 #   [dest-dir]   default: ~/.claude/sounds
 # Reads $TIBSUN_SRC/<canon>.wav (canonical WAVs from extract_mix.py + ffmpeg),
 # trims silence, normalizes loudness, adds click-guard fades, encodes mp3.

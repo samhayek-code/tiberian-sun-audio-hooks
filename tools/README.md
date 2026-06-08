@@ -25,7 +25,7 @@ Speech01/02.mix ──extract_mix.py──▶ *.aud ──ffmpeg(wsaud)──▶
   aligned, maps each LMD name to an index id (100% match). The `i`/`n` letter splits GDI / Nod.
 - **`build_pack.sh <manifest> <pack>`** — trim silence → loudnorm → click-guard fades → mp3.
   Source WAVs via `TIBSUN_SRC` (default `~/tibsun-spike/named`).
-- **`gdi.manifest` / `cabal.manifest`** — `canon|event|output-name` per line.
+- **`gdi.manifest` / `nod.manifest`** — `canon|event|output-name` per line.
 
 ## Source & deps
 
@@ -43,5 +43,5 @@ curl -sL "$base/Speech01.mix" -o mix/Speech01.mix
 curl -sL "$base/Speech02.mix" -o mix/Speech02.mix
 python3 tools/extract_mix.py mix/Speech01.mix aud/s1     # + s2
 # ffmpeg each aud -> named/<canon>.wav (see hashtest.py for id->name), then:
-TIBSUN_SRC=~/tibsun-spike/named tools/build_pack.sh tools/gdi.manifest tiberian-sun-gdi
+TIBSUN_SRC=~/tibsun-spike/named tools/build_pack.sh tools/gdi.manifest gdi
 ```

@@ -31,8 +31,8 @@ others and the shared hooks intact.
 
 | Pack | Voice | Sample |
 |------|-------|--------|
-| `tiberian-sun-gdi` | GDI EVA (battlefield announcer) | *"Construction complete." · "Ion cannon ready." · "Insufficient funds."* |
-| `tiberian-sun-cabal` | CABAL (Nod AI) | *"Your probability of success is insignificant and dropping." · "Prepare for sterilization."* |
+| `gdi` | GDI EVA (battlefield announcer) | *"Construction complete." · "Ion cannon ready." · "Insufficient funds."* |
+| `nod` | CABAL (Nod AI) | *"Your probability of success is insignificant and dropping." · "Prepare for sterilization."* |
 
 Each pack is a folder of four event buckets: `session-start`, `task-complete`,
 `needs-permission`, `error`. `play-random.sh` picks a random clip from the active pack's
@@ -46,9 +46,9 @@ T-minus 3, 2, 1."*) — every event stays in his voice.
 ## Use
 
 ```bash
-~/.claude/sounds/set-faction.sh tiberian-sun-gdi      # GDI EVA
-~/.claude/sounds/set-faction.sh tiberian-sun-cabal    # CABAL
-~/.claude/sounds/set-faction.sh protoss               # back to SC2, if installed
+~/.claude/sounds/set-faction.sh gdi      # GDI EVA
+~/.claude/sounds/set-faction.sh nod      # CABAL (Nod AI)
+~/.claude/sounds/set-faction.sh protoss  # back to SC2, if installed
 ```
 
 `set-faction.sh` auto-discovers any pack folder in `~/.claude/sounds/`, so SC2, Halo, and
@@ -73,7 +73,7 @@ Mixer). The flow, end to end:
    decoder). `-fflags +discardcorrupt` silences a benign tail-block warning.
 5. **Labeling** — [whisper.cpp](https://github.com/ggerganov/whisper.cpp) transcribes the full
    306-line corpus so the right lines can be sorted into event buckets.
-6. **`build_pack.sh`** — per `gdi.manifest` / `cabal.manifest`: trim silence, normalize
+6. **`build_pack.sh`** — per `gdi.manifest` / `nod.manifest`: trim silence, normalize
    loudness, add click-guard fades, encode to mp3.
 
 Requires `ffmpeg` and (for labeling) `whisper-cpp`.

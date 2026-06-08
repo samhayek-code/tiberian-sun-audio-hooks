@@ -15,7 +15,7 @@ print_error()   { echo -e "  ${RED}✗${NC} $1"; }
 FORCE=false
 for arg in "$@"; do [ "$arg" = "--force" ] && FORCE=true; done
 
-PACKS=(tiberian-sun-gdi tiberian-sun-cabal)
+PACKS=(gdi nod)
 
 echo ""
 echo -e "  ${CYAN}╔══════════════════════════════════════════╗${NC}"
@@ -44,7 +44,7 @@ echo ""
 
 # ── Source detection (local repo vs remote curl) ────────────────────────────
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd)"
-if [[ -d "$SCRIPT_DIR/sounds/tiberian-sun-gdi" ]]; then
+if [[ -d "$SCRIPT_DIR/sounds/gdi" ]]; then
   SOURCE_DIR="$SCRIPT_DIR"
 else
   print_step "Downloading from GitHub..."
@@ -59,16 +59,16 @@ fi
 echo -e "  ${CYAN}┌────────────────────────────────────────────────┐${NC}"
 echo -e "  ${CYAN}│${NC}  ${BOLD}SELECT YOUR VOICE${NC}                              ${CYAN}│${NC}"
 echo -e "  ${CYAN}├────────────────────────────────────────────────┤${NC}"
-echo -e "  ${CYAN}│${NC}   ${BOLD}[1]${NC} GDI EVA  — ${DIM}\"Construction complete\"${NC}        ${CYAN}│${NC}"
-echo -e "  ${CYAN}│${NC}   ${BOLD}[2]${NC} CABAL    — ${DIM}\"Prepare for sterilization\"${NC}     ${CYAN}│${NC}"
+echo -e "  ${CYAN}│${NC}   ${BOLD}[1]${NC} GDI      — ${DIM}\"Construction complete\"${NC}        ${CYAN}│${NC}"
+echo -e "  ${CYAN}│${NC}   ${BOLD}[2]${NC} NOD      — ${DIM}\"Prepare for sterilization\"${NC}     ${CYAN}│${NC}"
 echo -e "  ${CYAN}└────────────────────────────────────────────────┘${NC}"
 echo ""
 if [ -t 0 ]; then
   read -p "  Enter choice [1-2, default=1]: " CHOICE
 else
-  CHOICE=$(bash -c 'read -p "  Enter choice [1-2, default=1]: " c < /dev/tty && echo "$c"' 2>/dev/null) || { CHOICE="1"; echo -e "  ${DIM}Non-interactive — defaulting to GDI EVA${NC}"; }
+  CHOICE=$(bash -c 'read -p "  Enter choice [1-2, default=1]: " c < /dev/tty && echo "$c"' 2>/dev/null) || { CHOICE="1"; echo -e "  ${DIM}Non-interactive — defaulting to GDI${NC}"; }
 fi
-case "$CHOICE" in 2) PACK="tiberian-sun-cabal" ;; *) PACK="tiberian-sun-gdi" ;; esac
+case "$CHOICE" in 2) PACK="nod" ;; *) PACK="gdi" ;; esac
 echo ""
 
 SOUNDS_DEST="$CLAUDE_DIR/sounds"
@@ -125,11 +125,11 @@ echo -e "  ${GREEN}╔═══════════════════�
 echo -e "  ${GREEN}║${NC}        ${BOLD}INSTALLATION COMPLETE${NC}             ${GREEN}║${NC}"
 echo -e "  ${GREEN}╚══════════════════════════════════════════╝${NC}"
 case "$PACK" in
-  tiberian-sun-gdi)   echo -e "  ${DIM}\"Establishing Battlefield Control. Stand by.\"${NC}" ;;
-  tiberian-sun-cabal) echo -e "  ${DIM}\"Your probability of success is insignificant and dropping.\"${NC}" ;;
+  gdi)   echo -e "  ${DIM}\"Establishing Battlefield Control. Stand by.\"${NC}" ;;
+  nod) echo -e "  ${DIM}\"Your probability of success is insignificant and dropping.\"${NC}" ;;
 esac
 echo ""
-echo -e "  ${CYAN}Switch voice:${NC}  ~/.claude/sounds/set-faction.sh tiberian-sun-cabal"
+echo -e "  ${CYAN}Switch voice:${NC}  ~/.claude/sounds/set-faction.sh nod"
 echo -e "  ${DIM}(also works with SC2 / Halo packs if installed)${NC}"
 echo -e "  ${CYAN}Test:${NC}         ~/.claude/sounds/play-random.sh ~/.claude/sounds/active/session-start"
 echo -e "  ${CYAN}Uninstall:${NC}    ./uninstall.sh"
