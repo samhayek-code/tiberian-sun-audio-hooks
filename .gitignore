@@ -1,0 +1,15 @@
+.venv/
+_*backup/
+_*tmp/
+__pycache__/
+*.pyc
+.DS_Store
+.originals/
+# extraction working dir / heavy or derived artifacts (never committed)
+tibsun-spike/
+*.mix
+*.aud
+catalog.json
+ggml-*.bin
+named/
+w16/
