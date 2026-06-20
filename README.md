@@ -1,5 +1,12 @@
 # Tiberian Sun Audio Hooks
 
+> **📦 Moved — this repo is archived (read-only).**
+> The Tiberian Sun packs and their extraction pipeline now live in
+> **[claude-audio-hooks](https://github.com/samhayek-code/claude-audio-hooks)**,
+> the single monorepo for all packs (StarCraft 2 · Halo · Tiberian Sun).
+> Install from there:
+> `bash <(curl -fsSL https://raw.githubusercontent.com/samhayek-code/claude-audio-hooks/main/install.sh)`
+
 ![CABAL and GDI EVA](./cover.png)
 
 Command & Conquer: Tiberian Sun voice-line sound packs for Claude Code event hooks.
